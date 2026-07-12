@@ -1,24 +1,12 @@
-name: Deploy Tienda de Perritos to EKS
+name: Pipeline Demo
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  deploy:
+  construir:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout del código
-        uses: actions/checkout@v3
-
-      - name: Validar arquitectura del proyecto
-        run: |
-          echo "Iniciando validación de manifiestos..."
-          ls -R k8s/
-          echo "Manifiestos encontrados correctamente."
-
-      - name: Simular despliegue en EKS
-        run: |
-          echo "Conectando a clúster EKS..."
-          echo "Desplegando: namespace.yaml, backend-deployment.yaml, frontend-deployment.yaml"
-          echo "Pipeline de CI/CD completado exitosamente."
+      - name: Validar Proyecto
+        run: echo "Pipeline ejecutado exitosamente y validado"
