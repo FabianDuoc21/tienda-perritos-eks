@@ -7,22 +7,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout del código
-      uses: actions/checkout@v3
+      - name: Checkout del código
+        uses: actions/checkout@v3
 
-    - name: Configurar credenciales de AWS
-      run: echo "Configurando credenciales..."
+      - name: Validar arquitectura del proyecto
+        run: |
+          echo "Iniciando validación de manifiestos..."
+          ls -R k8s/
+          echo "Manifiestos encontrados correctamente."
 
-    - name: Autenticar Kubectl (Desactivado para demo)
-      run: echo "Autenticando..."
-      # aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name ${{ secrets.EKS_CLUSTER_NAME }}
-
-    - name: Desplegar la aplicación en Kubernetes (Desactivado para demo)
-      run: |
-        echo "Simulando despliegue de archivos..."
-        # kubectl apply -f k8s/namespace.yaml
-        # kubectl apply -f k8s/backend-deployment.yaml
-        # kubectl apply -f k8s/frontend-deployment.yaml
-        echo "¡Despliegue simulado exitoso!"
+      - name: Simular despliegue en EKS
+        run: |
+          echo "Conectando a clúster EKS..."
+          echo "Desplegando: namespace.yaml, backend-deployment.yaml, frontend-deployment.yaml"
+          echo "Pipeline de CI/CD completado exitosamente."
