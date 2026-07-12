@@ -13,19 +13,16 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Configurar credenciales de AWS
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-        aws-region: ${{ secrets.AWS_REGION }}
+      run: echo "Configurando credenciales..."
 
-    - name: Autenticar Kubectl con tu clúster EKS
-      run: |
-        aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name ${{ secrets.EKS_CLUSTER_NAME }}
+    - name: Autenticar Kubectl (Desactivado para demo)
+      run: echo "Autenticando..."
+      # aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name ${{ secrets.EKS_CLUSTER_NAME }}
 
-    - name: Desplegar la aplicación en Kubernetes (EKS)
+    - name: Desplegar la aplicación en Kubernetes (Desactivado para demo)
       run: |
-        kubectl apply -f k8s/namespace.yaml
-        kubectl apply -f k8s/
+        echo "Simulando despliegue de archivos..."
+        # kubectl apply -f k8s/namespace.yaml
+        # kubectl apply -f k8s/backend-deployment.yaml
+        # kubectl apply -f k8s/frontend-deployment.yaml
+        echo "¡Despliegue simulado exitoso!"
